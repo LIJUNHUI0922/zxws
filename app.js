@@ -1810,55 +1810,136 @@ function analyzeLogContent(content, fileName) {
         recommendations: []
     };
     
-    // 定义漏洞检测规则
+    // 定义漏洞检测规则（覆盖首页全部常见漏洞类型）
     const vulnPatterns = [
+        // ===== Web攻击类 =====
         {
             type: 'SQL注入',
-            pattern: /(union\s+select|select\s+.*\s+from|insert\s+into|delete\s+from|update\s+.*\s+set|drop\s+table|'\s+or\s+'|'\s+and\s+'|admin'--|1=1)/gi,
+            pattern: /(union\s+select|select.*from|insert\s+into|delete\s+from|update.*set|drop\s+table|'\s+or\s+'|'\s+and\s+'|admin'--|1=1|sleep\s*\(|benchmark\s*\()/gi,
             severity: 'high',
             description: '检测到可能的SQL注入攻击尝试'
         },
         {
             type: 'XSS攻击',
-            pattern: /(<script>|javascript:|onerror=|onload=|alert\(|document\.cookie|<iframe)/gi,
+            pattern: /(<script>|javascript:|onerror\s*=|onload\s*=|alert\s*\(|document\.cookie|<iframe|eval\s*\(|document\.write)/gi,
             severity: 'high',
             description: '检测到跨站脚本攻击特征'
         },
         {
+            type: 'CSRF攻击',
+            pattern: /(csrf|cross.site.request.forgery|forged.request|unauthorized.action)/gi,
+            severity: 'medium',
+            description: '检测到可能的跨站请求伪造攻击'
+        },
+        {
+            type: 'SSRF攻击',
+            pattern: /(ssrf|server.side.request.forgery|internal\.|localhost|127\.0\.0\.1|0\.0\.0\.0)/gi,
+            severity: 'high',
+            description: '检测到可能的服务端请求伪造攻击'
+        },
+        {
+            type: 'XXE攻击',
+            pattern: /(<\?xml|<!DOCTYPE|ENTITY\s+.*SYSTEM|XXE|xml\.external)/gi,
+            severity: 'high',
+            description: '检测到可能的XML外部实体注入攻击'
+        },
+        {
             type: '目录遍历',
-            pattern: /(\.\.\/|\.\.\\|%2e%2e%2f|%2e%2e%5c)/gi,
+            pattern: /(\.\.\/|\.\.\\|%2e%2e%2f|%2e%2e%5c|path\.traversal)/gi,
             severity: 'medium',
             description: '检测到目录遍历攻击尝试'
         },
         {
+            type: '文件包含',
+            pattern: /(include\s*\(|require\s*\(|file=\.\.\/|path=\.\.\/|LFI|RFI)/gi,
+            severity: 'medium',
+            description: '检测到文件包含攻击特征'
+        },
+        {
+            type: '命令注入',
+            pattern: /(;\s*cat\s+|;\s*ls\s+|;\s*id\s+|;\s*whoami\s+|\|\s*cat\s+|\|\s*ls\s+|`\s*.*`|\$\(.*\))/gi,
+            severity: 'high',
+            description: '检测到可能的命令注入攻击'
+        },
+        {
+            type: 'CC攻击',
+            pattern: /(GET|POST)\s+\/.*HTTP\/.*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).*(\d{2,}\/)/gi,
+            severity: 'high',
+            description: '检测到可能的CC攻击特征'
+        },
+        // ===== 恶意软件/勒索软件类 =====
+        {
+            type: '恶意软件',
+            pattern: /(virus|malware|trojan|backdoor|rootkit|spyware|adware|worm\.|infected|malicious\.file|threat\.detected)/gi,
+            severity: 'high',
+            description: '检测到恶意软件相关威胁'
+        },
+        {
+            type: '勒索软件',
+            pattern: /(ransomware|encrypt|decrypt\.key|readme\.txt|restore\.files|\.locked|\.encrypted|\.crypto|\.cry|WannaCry|Ryuk|Conti|LockBit)/gi,
+            severity: 'critical',
+            description: '检测到可能的勒索软件活动'
+        },
+        // ===== APT攻击类 =====
+        {
+            type: 'APT攻击',
+            pattern: /(apt\.|advanced\.persistent\.threat|spear.phish|watering\.hole|c2\.server|command\.and\.control|beacon|lateral\.movement|privilege\.escalation)/gi,
+            severity: 'critical',
+            description: '检测到可能的高级持续性威胁(APT)活动'
+        },
+        // ===== 数据泄露类 =====
+        {
+            type: '数据泄露',
+            pattern: /(data\.leak|exfiltration|unauthorized\.access|sensitive\.data|personal\.info|credit\.card|id\.number|social\.security|export\.large\.file)/gi,
+            severity: 'high',
+            description: '检测到可能的数据泄露风险'
+        },
+        // ===== DDoS攻击类 =====
+        {
+            type: 'DDoS攻击',
+            pattern: /(syn\.flood|udp\.flood|http\.flood|dos\.attack|ddos|high\.volume\.request|rate\.limit\.exceeded|botnet)/gi,
+            severity: 'medium',
+            description: '检测到可能的DDoS攻击特征'
+        },
+        // ===== 暴力破解/异常访问类 =====
+        {
             type: '暴力破解',
-            pattern: /(failed\s+login|authentication\s+failed|invalid\s+password|too\s+many\s+attempts)/gi,
+            pattern: /(failed\s+login|authentication\s+failed|invalid\s+password|too\s+many\s+attempts|brute\s*force|password\s+guess)/gi,
             severity: 'medium',
             description: '检测到可能的暴力破解行为'
         },
         {
             type: '异常访问',
-            pattern: /(\s+404\s+|\s+403\s+|\s+401\s+|\s+500\s+)/gi,
+            pattern: /(\s+404\s+|\s+403\s+|\s+401\s+|\s+500\s+|\s+502\s+|\s+503\s+)/gi,
             severity: 'low',
             description: '检测到异常访问状态码'
         },
         {
-            type: 'CC攻击',
-            pattern: /(GET|POST)\s+\/.*HTTP\/.*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).*(\d{2,}\/\/)/gi,
+            type: '权限提升',
+            pattern: /(privilege\.escalation|sudo\s+|admin\s+access|root\s+access|unauthorized\.admin)/gi,
             severity: 'high',
-            description: '检测到可能的CC攻击特征'
+            description: '检测到可能的权限提升尝试'
         },
+        // ===== 物联网威胁类 =====
         {
-            type: '命令注入',
-            pattern: /(;\s*cat\s+|;\s*ls\s+|;\s*id\s+|;\s*whoami\s+|\|\s*cat\s+|\|\s*ls\s+)/gi,
-            severity: 'high',
-            description: '检测到可能的命令注入攻击'
-        },
-        {
-            type: '文件包含',
-            pattern: /(include\s*\(|require\s*\(|file=\.\.\/|path=\.\.\/)/gi,
+            type: '物联网威胁',
+            pattern: /(iot\.device|default\.password|camera\.hack|iot\.botnet|mirai|telnet\.attempt|iot\.vulnerability)/gi,
             severity: 'medium',
-            description: '检测到文件包含攻击特征'
+            description: '检测到可能的物联网设备威胁'
+        },
+        // ===== 钓鱼攻击类 =====
+        {
+            type: '钓鱼攻击',
+            pattern: /(phishing|spear.phish|malicious\.link|fake\.login|credential\.harvest|deceptive\.site)/gi,
+            severity: 'high',
+            description: '检测到可能的钓鱼攻击活动'
+        },
+        // ===== 内部威胁类 =====
+        {
+            type: '内部威胁',
+            pattern: /(insider\.threat|unusual\.access|after\.hours|bulk\.download|unauthorized\.share|data\.misuse)/gi,
+            severity: 'medium',
+            description: '检测到可能的内部威胁行为'
         }
     ];
     
@@ -1910,15 +1991,57 @@ function analyzeLogContent(content, fileName) {
             } else if (v.type === 'XSS攻击') {
                 result.recommendations.push('启用XSS防护过滤特殊字符');
                 result.recommendations.push('设置HTTP Only Cookie');
+            } else if (v.type === 'CSRF攻击') {
+                result.recommendations.push('启用CSRF Token验证机制');
+                result.recommendations.push('配置Referer/CORS策略');
+            } else if (v.type === 'SSRF攻击') {
+                result.recommendations.push('启用SSRF防护，限制内网访问');
+                result.recommendations.push('配置URL白名单验证');
+            } else if (v.type === 'XXE攻击') {
+                result.recommendations.push('禁用XML外部实体解析');
+                result.recommendations.push('使用JSON替代XML传输数据');
             } else if (v.type === '目录遍历') {
                 result.recommendations.push('配置路径访问控制');
                 result.recommendations.push('禁用目录列表功能');
-            } else if (v.type === '暴力破解') {
-                result.recommendations.push('启用账号锁定机制');
-                result.recommendations.push('部署专线卫士入侵防御(IPS)');
+            } else if (v.type === '文件包含') {
+                result.recommendations.push('禁用动态文件包含功能');
+                result.recommendations.push('使用白名单验证包含路径');
+            } else if (v.type === '命令注入') {
+                result.recommendations.push('避免使用系统命令执行函数');
+                result.recommendations.push('对输入参数进行严格过滤');
             } else if (v.type === 'CC攻击') {
                 result.recommendations.push('启用CC攻击防护');
                 result.recommendations.push('配置访问频率限制');
+            } else if (v.type === '恶意软件') {
+                result.recommendations.push('部署专线卫士防病毒(AV)模块');
+                result.recommendations.push('启用实时威胁情报联动检测');
+            } else if (v.type === '勒索软件') {
+                result.recommendations.push('部署专线卫士防勒索模块，启用文件完整性监控');
+                result.recommendations.push('定期离线备份重要数据');
+            } else if (v.type === 'APT攻击') {
+                result.recommendations.push('部署专线卫士APT检测模块，启用流量深度分析');
+                result.recommendations.push('结合威胁情报关联分析，建立应急响应机制');
+            } else if (v.type === '数据泄露') {
+                result.recommendations.push('部署专线卫士数据防泄露(DLP)模块');
+                result.recommendations.push('启用敏感数据识别与外发审计');
+            } else if (v.type === 'DDoS攻击') {
+                result.recommendations.push('部署专线卫士DDoS防护模块');
+                result.recommendations.push('配置流量清洗与异常流量检测');
+            } else if (v.type === '暴力破解') {
+                result.recommendations.push('启用账号锁定机制');
+                result.recommendations.push('部署专线卫士入侵防御(IPS)');
+            } else if (v.type === '权限提升') {
+                result.recommendations.push('实施最小权限访问控制原则');
+                result.recommendations.push('启用专线卫士特权账号监控');
+            } else if (v.type === '物联网威胁') {
+                result.recommendations.push('修改物联网设备默认密码');
+                result.recommendations.push('部署专线卫士物联网安全模块');
+            } else if (v.type === '钓鱼攻击') {
+                result.recommendations.push('加强员工网络安全意识培训');
+                result.recommendations.push('部署专线卫士邮件安全网关');
+            } else if (v.type === '内部威胁') {
+                result.recommendations.push('实施数据分类分级与访问控制');
+                result.recommendations.push('部署专线卫士用户行为分析模块');
             }
         });
         
