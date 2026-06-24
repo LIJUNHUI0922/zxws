@@ -1,807 +1,196 @@
-/* 漏洞类型说明样式 */
-.vuln-types-guide-tech {
-    padding: 20px;
+/* ============================
+   日志分析页面 - 科技风优化版
+   ============================ */
+
+/* 上传区域 - 玻璃拟态科技风 */
+.log-upload-section-tech {
+    padding: 24px 20px;
+}
+
+.upload-header-tech {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.upload-icon-tech {
+    font-size: 48px;
+    margin-bottom: 12px;
+    display: inline-block;
+    animation: techPulse 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(0,212,255,0.4));
+}
+
+@keyframes techPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 12px rgba(0,212,255,0.4)); }
+    50%       { transform: scale(1.08); filter: drop-shadow(0 0 24px rgba(0,212,255,0.7)); }
+}
+
+.upload-title-tech {
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.upload-desc-tech {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+}
+
+/* 上传区域 - 科技风拖拽区 */
+.upload-area-tech {
+    border: 2px dashed rgba(0,212,255,0.3);
+    border-radius: 20px;
+    padding: 40px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 20px;
+    background: rgba(0,212,255,0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-area-tech::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, transparent 50%, rgba(0,102,255,0.03) 100%);
+    pointer-events: none;
+}
+
+.upload-area-tech:hover,
+.upload-area-tech.drag-over {
+    border-color: rgba(0,212,255,0.6);
+    background: rgba(0,212,255,0.06);
+    box-shadow: 0 0 30px rgba(0,212,255,0.1), inset 0 0 30px rgba(0,212,255,0.03);
+    transform: translateY(-2px);
+}
+
+.upload-icon-large-tech {
+    font-size: 52px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 8px rgba(0,212,255,0.3));
+}
+
+.upload-text-tech {
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.upload-hints-tech {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.upload-hint-tech {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.05);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.upload-btn-tech {
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    border-radius: 16px;
+    background: linear-gradient(135deg, #0066ff 0%, #0047cc 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 36px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 16px rgba(0,102,255,0.3);
+    position: relative;
+    z-index: 1;
+    font-family: 'PingFang SC', sans-serif;
+}
+
+.upload-btn-tech:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,102,255,0.4);
+}
+
+/* 进度条 */
+.upload-progress-tech {
+    margin-top: 16px;
+}
+
+.progress-bar-tech {
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill-tech {
+    height: 100%;
+    background: linear-gradient(90deg, #0066ff, #00d4ff, #0066ff);
+    background-size: 200% 100%;
+    animation: progressShimmer 1.5s ease-in-out infinite;
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+@keyframes progressShimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.progress-text-tech {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* ============================
+   漏洞类型说明 - 网格优化
+   ============================ */
+.vuln-types-guide-tech {
+    padding: 24px 20px;
+    margin: 0 20px 24px;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
 }
 
 .guide-header-tech {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.guide-icon-tech {
+    font-size: 22px;
+    filter: drop-shadow(0 0 8px rgba(0,212,255,0.5));
 }
 
 .guide-header-tech h3 {
     color: #00d4ff;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.guide-grid-tech {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 12px;
-}
-
-.guide-item-tech {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.guide-icon-small-tech {
-    font-size: 20px;
-    flex-shrink: 0;
-}
-
-.guide-info-tech h5 {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    margin-bottom: 4px;
-    font-weight: 500;
-}
-
-.guide-info-tech p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 12px;
-    line-height: 1.4;
-}
-
-/* 分析结果样式优化 */
-.result-summary-card-tech {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.summary-header-tech {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 20px;
-}
-
-.summary-icon-tech {
-    font-size: 48px;
-}
-
-.summary-info-tech h4 {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 18px;
-    margin-bottom: 8px;
-}
-
-.risk-badge-tech {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.risk-badge-tech.high {
-    background: rgba(255, 77, 77, 0.2);
-    color: #ff4d4d;
-    border: 1px solid rgba(255, 77, 77, 0.3);
-}
-
-.risk-badge-tech.medium {
-    background: rgba(255, 163, 0, 0.2);
-    color: #ffa300;
-    border: 1px solid rgba(255, 163, 0, 0.3);
-}
-
-.risk-badge-tech.low {
-    background: rgba(0, 212, 255, 0.2);
-    color: #00d4ff;
-    border: 1px solid rgba(0, 212, 255, 0.3);
-}
-
-.summary-meta-tech {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.meta-item-tech {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.meta-label-tech {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 12px;
-}
-
-.meta-value-tech {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.risk-score-tech {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.score-circle-tech {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 4px solid;
-}
-
-.score-circle-tech.high {
-    background: rgba(255, 77, 77, 0.1);
-    border-color: #ff4d4d;
-}
-
-.score-circle-tech.medium {
-    background: rgba(255, 163, 0, 0.1);
-    border-color: #ffa300;
-}
-
-.score-circle-tech.low {
-    background: rgba(0, 212, 255, 0.1);
-    border-color: #00d4ff;
-}
-
-.score-value-tech {
-    font-size: 36px;
+    font-size: 17px;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
 }
 
-.score-label-tech {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* 漏洞详情卡片 */
-.vuln-detail-card-tech {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 12px;
-}
-
-.vuln-detail-header-tech {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.vuln-type-icon-tech {
-    font-size: 24px;
-    flex-shrink: 0;
-}
-
-.vuln-type-info-tech {
-    flex: 1;
-}
-
-.vuln-type-info-tech h5 {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 16px;
-    margin-bottom: 4px;
-    font-weight: 500;
-}
-
-.vuln-severity-badge-tech {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.vuln-severity-badge-tech.high {
-    background: rgba(255, 77, 77, 0.2);
-    color: #ff4d4d;
-}
-
-.vuln-severity-badge-tech.medium {
-    background: rgba(255, 163, 0, 0.2);
-    color: #ffa300;
-}
-
-.vuln-severity-badge-tech.low {
-    background: rgba(0, 212, 255, 0.2);
-    color: #00d4ff;
-}
-
-.vuln-count-tech {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.count-value-tech {
-    font-size: 24px;
-    font-weight: 700;
-    color: #00d4ff;
-}
-
-.count-label-tech {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.vuln-detail-desc-tech {
-    margin-bottom: 12px;
-}
-
-.vuln-detail-desc-tech p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.vuln-examples-tech {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    padding: 12px;
-    margin-top: 8px;
-}
-
-.examples-header-tech {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 13px;
-    margin-bottom: 8px;
-    font-weight: 500;
-}
-
-.example-code-tech {
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    color: #ff4d4d;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 6px 10px;
-    border-radius: 6px;
-    margin-bottom: 6px;
-    overflow-x: auto;
-    white-space: nowrap;
-}
-
-/* 可视化图表样式 */
-.chart-bar-container-tech {
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    border-radius: 16px;
-    margin-bottom: 20px;
-}
-
-.chart-bar-item-tech {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.chart-bar-item-tech:last-child {
-    margin-bottom: 0;
-}
-
-.bar-label-tech {
-    width: 100px;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 13px;
-    text-align: right;
-    flex-shrink: 0;
-}
-
-.bar-track-tech {
-    flex: 1;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.bar-fill-tech {
-    height: 100%;
-    border-radius: 10px;
-    transition: width 0.5s ease;
-}
-
-.bar-fill-tech.high {
-    background: linear-gradient(90deg, #ff4d4d, #ff6b6b);
-}
-
-.bar-fill-tech.medium {
-    background: linear-gradient(90deg, #ffa300, #ffb74d);
-}
-
-.bar-fill-tech.low {
-    background: linear-gradient(90deg, #00d4ff, #00e5ff);
-}
-
-.bar-value-tech {
-    width: 40px;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    flex-shrink: 0;
-}
-
-/* 推荐方案样式 */
-.rec-list-tech {
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    border-radius: 16px;
-}
-
-.rec-item-tech {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px;
-    background: rgba(0, 212, 255, 0.05);
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.rec-item-tech:last-child {
-    margin-bottom: 0;
-}
-
-.rec-icon-tech {
-    color: #00ff88;
-    font-size: 18px;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-
-.rec-text-tech {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* 历史记录样式 */
-.history-item-tech {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 10px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.history-item-tech:hover {
-    background: rgba(0, 212, 255, 0.1);
-    transform: translateX(5px);
-}
-
-.history-icon-small-tech {
-    font-size: 24px;
-    flex-shrink: 0;
-}
-
-.history-info-tech {
-    flex: 1;
-}
-
-.history-info-tech h5 {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    margin-bottom: 4px;
-    font-weight: 500;
-}
-
-.history-info-tech p {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 12px;
-}
-
-.risk-badge-small-tech {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.risk-badge-small-tech.high {
-    background: rgba(255, 77, 77, 0.2);
-    color: #ff4d4d;
-}
-
-.risk-badge-small-tech.medium {
-    background: rgba(255, 163, 0, 0.2);
-    color: #ffa300;
-}
-
-.risk-badge-small-tech.low {
-    background: rgba(0, 212, 255, 0.2);
-    color: #00d4ff;
-}
-
-.no-history-tech {
-    text-align: center;
-    padding: 30px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
-}
-
-/* 关闭按钮 */
-.result-close-tech {
-    position: absolute;
-    right: 16px;
-    top: 16px;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 24px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.result-close-tech:hover {
-    color: #ff4d4d;
-}
-
-/* 未检测到漏洞的样式 */
-.no-vuln-found-tech {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.no-vuln-icon-tech {
-    font-size: 64px;
-    margin-bottom: 16px;
-}
-
-.no-vuln-found-tech h4 {
-    color: #00ff88;
-    font-size: 18px;
-    margin-bottom: 8px;
-}
-
-.no-vuln-found-tech p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-}
-
-/* ===== 历史记录增强样式 ===== */
-
-/* 历史记录头部操作区 */
-.history-header-tech {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-}
-
-.history-header-tech h3 {
-    color: #00d4ff;
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0;
-    flex-shrink: 0;
-}
-
-.history-actions-tech {
-    display: flex;
-    gap: 8px;
-    margin-left: auto;
-    flex-wrap: wrap;
-}
-
-.history-action-btn-tech {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 6px 12px;
-    background: rgba(0, 212, 255, 0.1);
-    border: 1px solid rgba(0, 212, 255, 0.3);
-    border-radius: 8px;
-    color: #00d4ff;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.history-action-btn-tech:hover {
-    background: rgba(0, 212, 255, 0.2);
-    border-color: rgba(0, 212, 255, 0.5);
-    transform: translateY(-1px);
-}
-
-.history-action-btn-tech.danger {
-    background: rgba(255, 77, 77, 0.1);
-    border-color: rgba(255, 77, 77, 0.3);
-    color: #ff4d4d;
-}
-
-.history-action-btn-tech.danger:hover {
-    background: rgba(255, 77, 77, 0.2);
-    border-color: rgba(255, 77, 77, 0.5);
-}
-
-/* 历史记录统计信息 */
-.history-stats-tech {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 12px 16px;
-    background: rgba(0, 212, 255, 0.05);
-    border-radius: 10px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-}
-
-.stats-item-tech {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.stats-icon-tech {
-    font-size: 16px;
-}
-
-.stats-text-tech {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 13px;
-}
-
-.stats-dot-tech {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.stats-dot-tech.high {
-    background: #ff4d4d;
-}
-
-.stats-dot-tech.medium {
-    background: #ffa300;
-}
-
-.stats-dot-tech.low {
-    background: #00d4ff;
-}
-
-/* 增强的历史记录条目 */
-.history-item-tech {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 14px 16px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.history-item-tech:hover {
-    background: rgba(0, 212, 255, 0.08);
-    border-color: rgba(0, 212, 255, 0.2);
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.1);
-}
-
-.history-item-left-tech {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-}
-
-.history-icon-wrapper-tech {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 212, 255, 0.1);
-    border-radius: 10px;
-    flex-shrink: 0;
-}
-
-.history-icon-small-tech {
-    font-size: 20px;
-}
-
-.history-info-tech {
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-}
-
-.history-filename-tech {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 6px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.history-meta-row-tech {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 2px;
-}
-
-.history-meta-tech {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 11px;
-    white-space: nowrap;
-}
-
-.history-item-right-tech {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-}
-
-.history-risk-tech {
-    display: flex;
-    align-items: center;
-}
-
-.risk-badge-small-tech {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.risk-badge-small-tech.high {
-    background: rgba(255, 77, 77, 0.2);
-    color: #ff4d4d;
-    border: 1px solid rgba(255, 77, 77, 0.3);
-}
-
-.risk-badge-small-tech.medium {
-    background: rgba(255, 163, 0, 0.2);
-    color: #ffa300;
-    border: 1px solid rgba(255, 163, 0, 0.3);
-}
-
-.risk-badge-small-tech.low {
-    background: rgba(0, 212, 255, 0.2);
-    color: #00d4ff;
-    border: 1px solid rgba(0, 212, 255, 0.3);
-}
-
-.risk-badge-small-tech.safe {
-    background: rgba(0, 255, 136, 0.2);
-    color: #00ff88;
-    border: 1px solid rgba(0, 255, 136, 0.3);
-}
-
-.history-score-tech {
-    display: flex;
-    align-items: baseline;
-    gap: 2px;
-    flex-shrink: 0;
-}
-
-.score-value-small-tech {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.score-value-small-tech.high {
-    color: #ff4d4d;
-}
-
-.score-value-small-tech.medium {
-    color: #ffa300;
-}
-
-.score-value-small-tech.low {
-    color: #00d4ff;
-}
-
-.score-label-small-tech {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.history-delete-btn-tech {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 77, 77, 0.1);
-    border: 1px solid rgba(255, 77, 77, 0.2);
-    border-radius: 8px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    opacity: 0;
-}
-
-.history-item-tech:hover .history-delete-btn-tech {
-    opacity: 1;
-}
-
-.history-delete-btn-tech:hover {
-    background: rgba(255, 77, 77, 0.3);
-    border-color: rgba(255, 77, 77, 0.5);
-    color: #ff4d4d;
-}
-
-/* 无历史记录占位 */
-.no-history-tech {
-    text-align: center;
-    padding: 40px 20px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
-}
-
-.no-history-icon-tech {
-    font-size: 48px;
-    margin-bottom: 12px;
-    opacity: 0.5;
-}
-
-.no-history-tech p {
-    margin-bottom: 8px;
-}
-
-.no-history-hint-tech {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.3);
-}
-
-/* 漏洞类型数量徽章 */
 .vuln-count-badge {
     background: linear-gradient(135deg, #00d4ff, #0099cc);
     color: #fff;
@@ -811,45 +200,14 @@
     border-radius: 20px;
     margin-left: 8px;
     vertical-align: middle;
+    box-shadow: 0 2px 8px rgba(0,212,255,0.3);
 }
 
-/* 漏洞危险等级文字 */
-.vuln-severity {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 2px;
-}
-
-/* 漏洞图标颜色 - 按危险等级 */
-.guide-icon-small-tech.critical {
-    color: #ff1744;
-    font-size: 20px;
-    flex-shrink: 0;
-}
-
-.guide-icon-small-tech.high {
-    color: #ff9100;
-    font-size: 20px;
-    flex-shrink: 0;
-}
-
-.guide-icon-small-tech.medium {
-    color: #ffd600;
-    font-size: 20px;
-    flex-shrink: 0;
-}
-
-.guide-icon-small-tech.low {
-    color: #00e676;
-    font-size: 20px;
-    flex-shrink: 0;
-}
-
-/* 漏洞类型网格 - 优化为3列 */
+/* 3列网格 */
 .guide-grid-tech {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 10px;
 }
 
 @media (max-width: 900px) {
@@ -862,4 +220,752 @@
     .guide-grid-tech {
         grid-template-columns: 1fr;
     }
+}
+
+.guide-item-tech {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s;
+}
+
+.guide-item-tech:hover {
+    background: rgba(0,212,255,0.06);
+    border-color: rgba(0,212,255,0.15);
+    transform: translateX(3px);
+}
+
+.guide-icon-small-tech {
+    font-size: 20px;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.2);
+}
+
+.guide-icon-small-tech.critical {
+    color: #ff1744;
+    background: rgba(255,23,68,0.1);
+    box-shadow: 0 0 8px rgba(255,23,68,0.2);
+}
+
+.guide-icon-small-tech.high {
+    color: #ff9100;
+    background: rgba(255,145,0,0.1);
+    box-shadow: 0 0 8px rgba(255,145,0,0.2);
+}
+
+.guide-icon-small-tech.medium {
+    color: #ffd600;
+    background: rgba(255,214,0,0.1);
+    box-shadow: 0 0 8px rgba(255,214,0,0.15);
+}
+
+.guide-icon-small-tech.low {
+    color: #00e676;
+    background: rgba(0,230,118,0.1);
+    box-shadow: 0 0 8px rgba(0,230,118,0.15);
+}
+
+.guide-info-tech h5 {
+    color: rgba(255,255,255,0.92);
+    font-size: 13px;
+    margin-bottom: 3px;
+    font-weight: 600;
+}
+
+.vuln-severity {
+    font-size: 11px;
+    color: rgba(255,255,255,0.42);
+    line-height: 1.3;
+}
+
+/* ============================
+   分析结果 - 卡片优化
+   ============================ */
+.analysis-result-tech {
+    margin: 0 20px 24px;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+.result-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    background: rgba(0,212,255,0.06);
+    border-bottom: 1px solid rgba(0,212,255,0.1);
+}
+
+.result-icon-tech {
+    font-size: 28px;
+    filter: drop-shadow(0 0 8px rgba(0,212,255,0.5));
+}
+
+.result-header-tech h3 {
+    flex: 1;
+    color: rgba(255,255,255,0.95);
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.result-close-tech {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    font-size: 20px;
+    cursor: pointer;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.result-close-tech:hover {
+    background: rgba(255,77,77,0.2);
+    color: #ff4d4d;
+    border-color: rgba(255,77,77,0.3);
+}
+
+/* 摘要卡片 */
+.result-summary-tech {
+    padding: 24px;
+}
+
+.summary-card-tech {
+    background: rgba(255,255,255,0.03);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.summary-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.summary-icon-tech {
+    font-size: 44px;
+    filter: drop-shadow(0 0 12px rgba(0,212,255,0.4));
+}
+
+.summary-info-tech h4 {
+    color: rgba(255,255,255,0.95);
+    font-size: 17px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.risk-badge-tech {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    gap: 4px;
+}
+
+.risk-badge-tech.critical {
+    background: rgba(255,23,68,0.15);
+    color: #ff5252;
+    border: 1px solid rgba(255,23,68,0.25);
+    box-shadow: 0 0 12px rgba(255,23,68,0.15);
+}
+
+.risk-badge-tech.high {
+    background: rgba(255,77,77,0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(255,77,77,0.25);
+    box-shadow: 0 0 12px rgba(255,77,77,0.15);
+}
+
+.risk-badge-tech.medium {
+    background: rgba(255,163,0,0.15);
+    color: #ffb74d;
+    border: 1px solid rgba(255,163,0,0.25);
+}
+
+.risk-badge-tech.low {
+    background: rgba(0,212,255,0.15);
+    color: #00d4ff;
+    border: 1px solid rgba(0,212,255,0.25);
+    box-shadow: 0 0 12px rgba(0,212,255,0.1);
+}
+
+/* 元信息网格 */
+.summary-meta-tech {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.meta-item-tech {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.meta-label-tech {
+    color: rgba(255,255,255,0.4);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.meta-value-tech {
+    color: rgba(255,255,255,0.88);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 风险评分圆环 */
+.risk-score-tech {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+}
+
+.score-circle-tech {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid;
+    position: relative;
+    box-shadow: 0 0 24px rgba(0,212,255,0.1);
+}
+
+.score-circle-tech::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px; right: -8px; bottom: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,212,255,0.1);
+    animation: scoreRing 3s ease-in-out infinite;
+}
+
+@keyframes scoreRing {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50%       { transform: scale(1.08); opacity: 1; }
+}
+
+.score-circle-tech.critical {
+    background: rgba(255,23,68,0.08);
+    border-color: #ff1744;
+    box-shadow: 0 0 24px rgba(255,23,68,0.15);
+}
+
+.score-circle-tech.high {
+    background: rgba(255,77,77,0.08);
+    border-color: #ff4d4d;
+    box-shadow: 0 0 24px rgba(255,77,77,0.12);
+}
+
+.score-circle-tech.medium {
+    background: rgba(255,163,0,0.08);
+    border-color: #ffa300;
+}
+
+.score-circle-tech.low {
+    background: rgba(0,212,255,0.08);
+    border-color: #00d4ff;
+    box-shadow: 0 0 24px rgba(0,212,255,0.1);
+}
+
+.score-value-tech {
+    font-size: 36px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.95);
+    line-height: 1;
+}
+
+.score-label-tech {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+}
+
+/* ============================
+   漏洞详情卡片
+   ============================ */
+.result-details-tech {
+    padding: 0 24px 20px;
+}
+
+.vuln-detail-card-tech {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.3s;
+}
+
+.vuln-detail-card-tech:hover {
+    background: rgba(0,212,255,0.04);
+    border-color: rgba(0,212,255,0.15);
+}
+
+.vuln-detail-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.vuln-type-icon-tech {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.25);
+}
+
+.vuln-type-info-tech {
+    flex: 1;
+}
+
+.vuln-type-info-tech h5 {
+    color: rgba(255,255,255,0.95);
+    font-size: 15px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.vuln-severity-badge-tech {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    gap: 4px;
+}
+
+.vuln-severity-badge-tech.critical {
+    background: rgba(255,23,68,0.15);
+    color: #ff5252;
+    border: 1px solid rgba(255,23,68,0.2);
+}
+
+.vuln-severity-badge-tech.high {
+    background: rgba(255,77,77,0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(255,77,77,0.2);
+}
+
+.vuln-severity-badge-tech.medium {
+    background: rgba(255,163,0,0.15);
+    color: #ffb74d;
+    border: 1px solid rgba(255,163,0,0.2);
+}
+
+.vuln-severity-badge-tech.low {
+    background: rgba(0,212,255,0.15);
+    color: #00d4ff;
+    border: 1px solid rgba(0,212,255,0.2);
+}
+
+.vuln-count-tech {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 14px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+.count-value-tech {
+    font-size: 22px;
+    font-weight: 800;
+    color: #00d4ff;
+    line-height: 1;
+}
+
+.count-label-tech {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+}
+
+.vuln-detail-desc-tech {
+    margin-bottom: 12px;
+}
+
+.vuln-detail-desc-tech p {
+    color: rgba(255,255,255,0.65);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* 攻击示例 - 代码块 */
+.vuln-examples-tech {
+    background: rgba(0,0,0,0.35);
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.examples-header-tech {
+    color: rgba(255,255,255,0.55);
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.example-code-tech {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: 12px;
+    color: #ffb74d;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* ============================
+   推荐方案
+   ============================ */
+.result-recommendations-tech {
+    padding: 0 24px 24px;
+}
+
+.recommendations-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.recommendations-header-tech h4 {
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.recommendation-list-tech {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.recommendation-item-tech {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(0,200,83,0.06);
+    border: 1px solid rgba(0,200,83,0.12);
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.recommendation-item-tech:hover {
+    background: rgba(0,200,83,0.1);
+    border-color: rgba(0,200,83,0.2);
+    transform: translateX(3px);
+}
+
+.rec-icon-tech {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.rec-text-tech {
+    color: rgba(255,255,255,0.8);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ============================
+   历史记录面板
+   ============================ */
+.analysis-history-tech {
+    margin: 0 20px 24px;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+
+.history-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px;
+    background: rgba(0,212,255,0.05);
+    border-bottom: 1px solid rgba(0,212,255,0.1);
+    flex-wrap: wrap;
+}
+
+.history-icon-tech {
+    font-size: 20px;
+    filter: drop-shadow(0 0 6px rgba(0,212,255,0.4));
+}
+
+.history-header-tech h3 {
+    flex: 1;
+    color: rgba(255,255,255,0.95);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.history-stats-tech {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.stat-badge-tech {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid;
+}
+
+.stat-badge-tech.total {
+    background: rgba(0,212,255,0.1);
+    color: #00d4ff;
+    border-color: rgba(0,212,255,0.2);
+}
+
+.stat-badge-tech.critical {
+    background: rgba(255,23,68,0.1);
+    color: #ff5252;
+    border-color: rgba(255,23,68,0.2);
+}
+
+.stat-badge-tech.high {
+    background: rgba(255,77,77,0.1);
+    color: #ff6b6b;
+    border-color: rgba(255,77,77,0.2);
+}
+
+.stat-badge-tech.medium {
+    background: rgba(255,163,0,0.1);
+    color: #ffb74d;
+    border-color: rgba(255,163,0,0.2);
+}
+
+.stat-badge-tech.low {
+    background: rgba(0,212,255,0.1);
+    color: #00d4ff;
+    border-color: rgba(0,212,255,0.2);
+}
+
+.history-actions-tech {
+    display: flex;
+    gap: 8px;
+}
+
+.history-action-btn-tech {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'PingFang SC', sans-serif;
+}
+
+.history-action-btn-tech:hover {
+    background: rgba(0,212,255,0.1);
+    border-color: rgba(0,212,255,0.25);
+    color: #00d4ff;
+}
+
+.history-action-btn-tech.danger:hover {
+    background: rgba(255,77,77,0.1);
+    border-color: rgba(255,77,77,0.25);
+    color: #ff6b6b;
+}
+
+/* 历史记录列表 */
+.history-list-tech {
+    padding: 16px;
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.history-list-tech::-webkit-scrollbar {
+    width: 4px;
+}
+
+.history-list-tech::-webkit-scrollbar-thumb {
+    background: rgba(0,212,255,0.2);
+    border-radius: 4px;
+}
+
+.history-item-tech {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.history-item-tech:hover {
+    background: rgba(0,212,255,0.06);
+    border-color: rgba(0,212,255,0.15);
+    transform: translateX(4px);
+}
+
+.history-item-tech:last-child {
+    margin-bottom: 0;
+}
+
+.history-icon-small-tech {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+.history-info-tech {
+    flex: 1;
+    min-width: 0;
+}
+
+.history-info-tech h5 {
+    color: rgba(255,255,255,0.9);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-meta-tech {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.history-meta-item-tech {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.history-risk-tech {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.risk-dot-tech {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 6px currentColor;
+}
+
+.risk-dot-tech.critical { background: #ff1744; color: #ff1744; }
+.risk-dot-tech.high     { background: #ff4d4d; color: #ff4d4d; }
+.risk-dot-tech.medium   { background: #ffa300; color: #ffa300; }
+.risk-dot-tech.low      { background: #00d4ff; color: #00d4ff; }
+
+.risk-score-small-tech {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+}
+
+.history-delete-tech {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.25);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    opacity: 0;
+}
+
+.history-item-tech:hover .history-delete-tech {
+    opacity: 1;
+}
+
+.history-delete-tech:hover {
+    background: rgba(255,77,77,0.15);
+    color: #ff6b6b;
+}
+
+/* 空状态 */
+.no-history-tech {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(255,255,255,0.4);
+}
+
+.no-history-icon-tech {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.4;
+}
+
+.no-history-tech p {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.no-history-hint-tech {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
 }
