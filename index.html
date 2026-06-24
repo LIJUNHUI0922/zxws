@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-title" content="专线卫士">
+    <title>专线卫士 - 防护案例分析助手</title>
+    <link rel="stylesheet" href="styles-tech.css">
+    <link rel="stylesheet" href="log-analysis-styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    <style>
+        /* 终极适配：确保底部导航栏不被浏览器工具栏遮挡 */
+        :root {
+            --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-area-inset-bottom-constant: constant(safe-area-inset-bottom, 0px);
+        }
+        
+        /* 针对不支持env()的浏览器的降级方案 */
+        @supports not (padding-bottom: env(safe-area-inset-bottom)) {
+            .tab-bar {
+                padding-bottom: 60px !important;
+            }
+            #app {
+                padding-bottom: 100px !important;
+            }
+        }
+        
+        /* 针对iOS Safari的特殊处理 */
+        @supports (-webkit-touch-callout: none) {
+            .tab-bar {
+                padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important;
+            }
+            #app {
+                padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 页面容器 -->
+        <div class="page-container">
+            <!-- 首页 -->
+            <div id="home-page" class="page active">
+                <div class="header">
+                    <div class="logo-section">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 60 60" width="60" height="60">
+                                <circle cx="30" cy="30" r="28" fill="#1890ff" stroke="#0050b3" stroke-width="2"/>
+                                <path d="M30 10 L30 50 M20 20 L40 20 M20 30 L40 30 M20 40 L40 40" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="30" cy="30" r="8" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <h1>专线卫士</h1>
+                            <p>防护案例分析助手</p>
+                        </div>
+                    </div>
+                    <div class="subtitle">中国移动 × 启明星辰</div>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="搜索场景或漏洞类型...">
+                    <button class="search-btn">
+                        <svg viewBox="0 0 24 24" width="20" height="20">
+                            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="quick-stats">
+                    <div class="stat-item" onclick="switchTab('solutions')">
+                        <span class="stat-num">8</span>
+                        <span class="stat-label">防护能力</span>
+                    </div>
+                    <div class="stat-item" onclick="switchTab('scenarios')">
+                        <span class="stat-num">6</span>
+                        <span class="stat-label">应用场景</span>
+                    </div>
+                    <div class="stat-item" onclick="switchTab('cases')">
+                        <span class="stat-num">12</span>
+                        <span class="stat-label">典型案例</span>
+                    </div>
+                </div>
+                
+                <div class="product-button" onclick="window.location.href='product.html'" style="
+                    background: linear-gradient(135deg, #1890ff 0%, #0050b3 100%);
+                    color: white;
+                    padding: 15px;
+                    border-radius: 12px;
+                    margin: 20px 0;
+                    text-align: center;
+                    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+                    cursor: pointer;
+                ">
+                    <div style="font-size: 18px; font-weight: 600; margin-bottom: 5px;">专线卫士产品介绍</div>
+                    <div style="font-size: 13px; opacity: 0.9;">了解启明星辰与华为专线卫士产品详情</div>
+                </div>
+                
+                <div class="section-title">
+                    <span>选择应用场景</span>
+                </div>
+                
+                <div class="scenario-grid" id="scenario-grid">
+                    <!-- 场景卡片将由JS动态生成 -->
+                </div>
+                
+                <div class="section-title">
+                    <span>常见漏洞类型</span>
+                </div>
+                
+                <div class="vulnerability-list" id="vulnerability-list">
+                    <!-- 漏洞类型将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 场景详情页 -->
+            <div id="scenario-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <h2 id="scenario-title">场景名称</h2>
+                </div>
+                
+                <div class="scenario-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="#1890ff" stroke-width="2"/>
+                                <path d="M12 6v6l4 2" fill="none" stroke="#1890ff" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>安全挑战</h4>
+                            <p id="scenario-challenge">-</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <span>相关漏洞类型</span>
+                </div>
+                
+                <div class="scenario-vulnerabilities" id="scenario-vulnerabilities">
+                    <!-- 相关漏洞将由JS动态生成 -->
+                </div>
+                
+                <div class="section-title">
+                    <span>防护案例</span>
+                </div>
+                
+                <div class="case-list" id="case-list">
+                    <!-- 案例将由JS动态生成 -->
+                </div>
+                
+                <div class="section-title">
+                    <span>专线卫士防护方案</span>
+                </div>
+                
+                <div class="solution-card" id="solution-card">
+                    <!-- 防护方案将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 案例详情页 -->
+            <div id="case-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <h2>案例详情</h2>
+                </div>
+                
+                <div class="case-detail" id="case-detail">
+                    <!-- 案例详情将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 漏洞详情页 -->
+            <div id="vuln-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <h2 id="vuln-title">漏洞类型</h2>
+                </div>
+                
+                <div class="vuln-detail" id="vuln-detail">
+                    <!-- 漏洞详情将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 场景列表页（独立） -->
+            <div id="scenarios-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h2>应用场景</h2>
+                        <p>选择行业场景，查看防护案例</p>
+                    </div>
+                </div>
+                <div class="scenario-list-page" id="scenario-list-page">
+                    <!-- 场景列表将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 漏洞列表页（独立） -->
+            <div id="vulns-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h2>漏洞类型</h2>
+                        <p>了解常见安全威胁与防护方案</p>
+                    </div>
+                </div>
+                <div class="vuln-list-page" id="vuln-list-page">
+                    <!-- 漏洞列表将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 防护能力页面 -->
+            <div id="solutions-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h2>防护能力</h2>
+                        <p>专线卫士八大核心防护能力</p>
+                    </div>
+                </div>
+                <div class="solutions-list" id="solutions-list">
+                    <!-- 防护能力列表将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 典型案例页面 -->
+            <div id="cases-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h2>典型案例</h2>
+                        <p>各行业安全防护成功案例</p>
+                    </div>
+                </div>
+                <div class="cases-list" id="cases-list">
+                    <!-- 典型案例列表将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 关于页面 -->
+            <div id="about-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h2>关于</h2>
+                        <p>产品信息与相关协议</p>
+                    </div>
+                </div>
+                <div class="about-content" id="about-content">
+                    <!-- 关于页面内容将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 案例详情页 -->
+            <div id="case-detail-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h2>案例详情</h2>
+                        <p>查看完整案例信息</p>
+                    </div>
+                </div>
+                <div class="case-detail-content" id="case-detail-content">
+                    <!-- 案例详情内容将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 日志分析页面 -->
+            <div id="log-analysis-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h2>日志分析</h2>
+                        <p>上传日志，智能分析安全威胁</p>
+                    </div>
+                </div>
+                <div class="log-analysis-content" id="log-analysis-content">
+                    <!-- 日志分析内容将由JS动态生成 -->
+                </div>
+            </div>
+
+            <!-- 协议详情页 -->
+            <div id="agreement-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h2 id="agreement-title">协议详情</h2>
+                    </div>
+                </div>
+                <div class="agreement-content" id="agreement-content">
+                    <!-- 协议内容将由JS动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 证书详情页 -->
+            <div id="certificate-page" class="page">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="page-title">
+                        <h2 id="certificate-title">证书详情</h2>
+                    </div>
+                </div>
+                <div class="certificate-content" id="certificate-content">
+                    <!-- 证书内容将由JS动态生成 -->
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- 底部导航 -->
+        <div class="tab-bar">
+            <div class="tab-item" data-page="home" onclick="switchTab('home')">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <polyline points="9,22 9,12 15,12 15,22" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span>首页</span>
+            </div>
+            <div class="tab-item" data-page="log-analysis" onclick="switchTab('log-analysis')">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <polyline points="14,2 14,8 20,8" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="15" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <line x1="12" y1="12" x2="12" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>日志</span>
+            </div>
+            <div class="tab-item" data-page="about" onclick="switchTab('about')">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>关于</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="effects.js"></script>
+</body>
+</html>

@@ -1,0 +1,741 @@
+
+/* ============================================
+   二级页面全面优化 - 科技感设计
+   ============================================ */
+
+/* 场景详情页 - 优化布局 */
+.scenario-info-tech {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.info-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.info-icon-tech {
+    font-size: 20px;
+}
+
+.info-header-tech h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.info-content-tech {
+    margin-bottom: 16px;
+}
+
+.info-content-tech p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.info-stats-tech {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.stat-pill-tech {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.stat-label-tech {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.stat-value-tech {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* 案例网格 - 优化布局 */
+.case-grid-tech {
+    display: grid;
+    gap: 16px;
+    padding: 0 20px 24px;
+}
+
+.case-card-tech {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.case-card-tech:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+    border-color: var(--primary-color);
+}
+
+.case-header-tech {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.case-icon-tech {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.case-header-tech h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.case-body-tech {
+    margin-bottom: 12px;
+}
+
+.case-body-tech p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.case-footer-tech {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.case-tag-tech {
+    font-size: 13px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* 解决方案 - 优化布局 */
+.solution-tech {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 0 20px 24px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.solution-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.solution-icon-tech {
+    font-size: 20px;
+}
+
+.solution-header-tech h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.solution-content-tech {
+    
+}
+
+.solution-desc-tech {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.solution-features-tech {
+    display: grid;
+    gap: 8px;
+}
+
+.feature-item-tech {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(0, 255, 136, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.feature-check-tech {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.feature-item-tech span:last-child {
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+/* 漏洞详情页 - 优化布局 */
+.vuln-detail-tech {
+    padding: 20px;
+}
+
+.vuln-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.vuln-icon-large-tech {
+    font-size: 48px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+}
+
+.vuln-title-section-tech h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.vuln-meta-tech {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.severity-badge-tech {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.severity-badge-tech.critical {
+    background: rgba(255, 71, 87, 0.2);
+    color: var(--danger-color);
+    border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+.severity-badge-tech.high {
+    background: rgba(255, 170, 0, 0.2);
+    color: var(--warning-color);
+    border: 1px solid rgba(255, 170, 0, 0.3);
+}
+
+.severity-badge-tech.medium {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.vuln-id-tech {
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+/* 漏洞详情 sections */
+.vuln-section-tech {
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.section-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.section-icon-tech {
+    font-size: 20px;
+}
+
+.section-header-tech h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.section-content-tech {
+    
+}
+
+.section-content-tech p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.solution-box-tech {
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* 防护建议列表 */
+.prevention-list-tech {
+    display: grid;
+    gap: 12px;
+}
+
+.prevention-item-tech {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 255, 0.15);
+}
+
+.prevention-number-tech {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+}
+
+.prevention-item-tech p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    flex: 1;
+}
+
+/* 相关案例网格 */
+.related-cases-grid-tech {
+    display: grid;
+    gap: 12px;
+}
+
+.related-case-card-tech {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.related-case-card-tech:hover {
+    background: rgba(0, 212, 255, 0.1);
+    transform: translateX(4px);
+}
+
+.case-icon-small-tech {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.related-case-card-tech p {
+    font-size: 14px;
+    color: var(--text-primary);
+    flex: 1;
+    font-weight: 500;
+}
+
+.case-arrow-tech {
+    color: var(--primary-color);
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* 案例详情页 - 优化布局 */
+.case-detail-tech {
+    padding: 20px;
+}
+
+.case-detail-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(123, 47, 247, 0.1) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.case-detail-icon-tech {
+    font-size: 48px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+}
+
+.case-detail-title-tech h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.case-detail-meta-tech {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.case-scenario-badge-tech {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(0, 212, 255, 0.2);
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 212, 255, 0.5);
+}
+
+.case-id-tech {
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+/* 案例详情 sections */
+.case-section-tech {
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.challenge-box-tech {
+    background: rgba(255, 71, 87, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(255, 71, 87, 0.2);
+}
+
+.challenge-box-tech p {
+    color: var(--text-primary);
+}
+
+.result-box-tech {
+    background: rgba(0, 255, 136, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.result-box-tech p {
+    color: var(--text-primary);
+}
+
+/* 时间线 */
+.process-timeline-tech {
+    display: grid;
+    gap: 16px;
+    position: relative;
+}
+
+.timeline-item-tech {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+}
+
+.timeline-marker-tech {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.timeline-content-tech {
+    flex: 1;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 255, 0.15);
+}
+
+.timeline-content-tech p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* 客户评价卡片 */
+.review-card-tech {
+    position: relative;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(123, 47, 247, 0.05) 100%);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.review-quote-tech {
+    font-size: 48px;
+    color: var(--primary-color);
+    opacity: 0.3;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    font-family: Georgia, serif;
+}
+
+.review-text-tech {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-style: italic;
+    padding-left: 20px;
+}
+
+/* 防护能力页面 - 优化布局 */
+.solutions-grid-tech {
+    display: grid;
+    gap: 16px;
+    padding: 20px;
+}
+
+.solution-card-tech {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.solution-card-tech:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+    border-color: var(--primary-color);
+}
+
+.solution-icon-wrapper-tech {
+    flex-shrink: 0;
+}
+
+.solution-icon-large-tech {
+    font-size: 40px;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+}
+
+.solution-info-tech {
+    flex: 1;
+}
+
+.solution-info-tech h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.solution-desc-tech {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.solution-features-grid-tech {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.feature-pill-tech {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.feature-check-small-tech {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* 典型案例页面 - 优化布局 */
+.cases-grid-tech {
+    display: grid;
+    gap: 16px;
+    padding: 20px;
+}
+
+.case-card-full-tech {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.case-card-full-tech:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+    border-color: var(--primary-color);
+}
+
+.case-card-header-tech {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(123, 47, 247, 0.1) 100%);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.case-scenario-icon-tech {
+    font-size: 28px;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+}
+
+.case-card-meta-tech {
+    
+}
+
+.case-card-body-tech {
+    padding: 16px;
+}
+
+.case-card-body-tech h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.case-summary-tech {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.case-card-footer-tech {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(0, 212, 255, 0.1);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.case-view-btn-tech {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.case-view-btn-tech:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .solution-card-tech {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .solution-features-grid-tech {
+        grid-template-columns: 1fr;
+    }
+    
+    .vuln-header-tech {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .vuln-meta-tech {
+        justify-content: center;
+    }
+    
+    .case-detail-header-tech {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .case-detail-meta-tech {
+        justify-content: center;
+    }
+}
