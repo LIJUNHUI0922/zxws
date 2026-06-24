@@ -1599,50 +1599,148 @@ function initLogAnalysis() {
         
         <div class="vuln-types-guide-tech">
             <div class="guide-header-tech">
-                <span class="guide-icon-tech">⚠️</span>
-                <h3>可检测的漏洞类型</h3>
+                <span class="guide-icon-tech">🛡️</span>
+                <h3>可检测的漏洞类型 <span class="vuln-count-badge">19种</span></h3>
             </div>
             <div class="guide-grid-tech">
                 <div class="guide-item-tech">
-                    <div class="guide-icon-small-tech">🔴</div>
+                    <div class="guide-icon-small-tech critical">🔴</div>
+                    <div class="guide-info-tech">
+                        <h5>勒索软件</h5>
+                        <p class="vuln-severity">严重 · 文件加密勒索</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech critical">🔴</div>
+                    <div class="guide-info-tech">
+                        <h5>APT攻击</h5>
+                        <p class="vuln-severity">严重 · 高级持续性威胁</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech high">🟠</div>
                     <div class="guide-info-tech">
                         <h5>SQL注入</h5>
-                        <p>检测日志中的SQL注入攻击特征</p>
+                        <p class="vuln-severity">高危 · 数据库攻击</p>
                     </div>
                 </div>
                 <div class="guide-item-tech">
-                    <div class="guide-icon-small-tech">🟠️</div>
+                    <div class="guide-icon-small-tech high">🟠</div>
                     <div class="guide-info-tech">
                         <h5>XSS攻击</h5>
-                        <p>检测跨站脚本攻击特征</p>
+                        <p class="vuln-severity">高危 · 跨站脚本</p>
                     </div>
                 </div>
                 <div class="guide-item-tech">
-                    <div class="guide-icon-small-tech">🟡</div>
+                    <div class="guide-icon-small-tech high">🟠</div>
                     <div class="guide-info-tech">
-                        <h5>目录遍历</h5>
-                        <p>检测非法路径访问尝试</p>
+                        <h5>SSRF攻击</h5>
+                        <p class="vuln-severity">高危 · 服务端请求伪造</p>
                     </div>
                 </div>
                 <div class="guide-item-tech">
-                    <div class="guide-icon-small-tech">🟢</div>
+                    <div class="guide-icon-small-tech high">🟠</div>
                     <div class="guide-info-tech">
-                        <h5>暴力破解</h5>
-                        <p>检测登录暴力破解行为</p>
+                        <h5>XXE攻击</h5>
+                        <p class="vuln-severity">高危 · XML外部实体</p>
                     </div>
                 </div>
                 <div class="guide-item-tech">
-                    <div class="guide-icon-small-tech">🔵</div>
+                    <div class="guide-icon-small-tech high">🟠</div>
                     <div class="guide-info-tech">
-                        <h5>异常访问</h5>
-                        <p>检测异常访问模式和频率</p>
+                        <h5>命令注入</h5>
+                        <p class="vuln-severity">高危 · 系统命令执行</p>
                     </div>
                 </div>
                 <div class="guide-item-tech">
-                    <div class="guide-icon-small-tech">🟣</div>
+                    <div class="guide-icon-small-tech high">🟠</div>
                     <div class="guide-info-tech">
                         <h5>CC攻击</h5>
-                        <p>检测挑战黑洞攻击特征</p>
+                        <p class="vuln-severity">高危 · 挑战黑洞攻击</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech high">🟠</div>
+                    <div class="guide-info-tech">
+                        <h5>恶意软件</h5>
+                        <p class="vuln-severity">高危 · 病毒木马间谍软件</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech high">🟠</div>
+                    <div class="guide-info-tech">
+                        <h5>数据泄露</h5>
+                        <p class="vuln-severity">高危 · 敏感数据外泄</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech high">🟠</div>
+                    <div class="guide-info-tech">
+                        <h5>权限提升</h5>
+                        <p class="vuln-severity">高危 · 异常提权操作</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech high">🟠</div>
+                    <div class="guide-info-tech">
+                        <h5>钓鱼攻击</h5>
+                        <p class="vuln-severity">高危 · 恶意链接伪造页</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech medium">🟡</div>
+                    <div class="guide-info-tech">
+                        <h5>CSRF攻击</h5>
+                        <p class="vuln-severity">中危 · 跨站请求伪造</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech medium">🟡</div>
+                    <div class="guide-info-tech">
+                        <h5>目录遍历</h5>
+                        <p class="vuln-severity">中危 · 非法路径访问</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech medium">🟡</div>
+                    <div class="guide-info-tech">
+                        <h5>文件包含</h5>
+                        <p class="vuln-severity">中危 · LFI/RFI攻击</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech medium">🟡</div>
+                    <div class="guide-info-tech">
+                        <h5>DDoS攻击</h5>
+                        <p class="vuln-severity">中危 · 流量攻击</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech medium">🟡</div>
+                    <div class="guide-info-tech">
+                        <h5>暴力破解</h5>
+                        <p class="vuln-severity">中危 · 登录爆破</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech medium">🟡</div>
+                    <div class="guide-info-tech">
+                        <h5>物联网威胁</h5>
+                        <p class="vuln-severity">中危 · IoT设备入侵</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech medium">🟡</div>
+                    <div class="guide-info-tech">
+                        <h5>内部威胁</h5>
+                        <p class="vuln-severity">中危 · 异常内部操作</p>
+                    </div>
+                </div>
+                <div class="guide-item-tech">
+                    <div class="guide-icon-small-tech low">🟢</div>
+                    <div class="guide-info-tech">
+                        <h5>异常访问</h5>
+                        <p class="vuln-severity">低危 · 异常状态码</p>
                     </div>
                 </div>
             </div>
@@ -3119,4 +3217,3 @@ function importAnalysisHistory() {
     
     fileInput.click();
 }
-

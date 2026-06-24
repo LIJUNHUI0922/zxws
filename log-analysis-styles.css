@@ -800,3 +800,66 @@
     font-size: 12px;
     color: rgba(255, 255, 255, 0.3);
 }
+
+/* 漏洞类型数量徽章 */
+.vuln-count-badge {
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* 漏洞危险等级文字 */
+.vuln-severity {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 2px;
+}
+
+/* 漏洞图标颜色 - 按危险等级 */
+.guide-icon-small-tech.critical {
+    color: #ff1744;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.guide-icon-small-tech.high {
+    color: #ff9100;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.guide-icon-small-tech.medium {
+    color: #ffd600;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.guide-icon-small-tech.low {
+    color: #00e676;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+/* 漏洞类型网格 - 优化为3列 */
+.guide-grid-tech {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 900px) {
+    .guide-grid-tech {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .guide-grid-tech {
+        grid-template-columns: 1fr;
+    }
+}
