@@ -50,13 +50,27 @@
         }
         
         .product-section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 16px;
             padding: 24px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.08);
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.1), 0 0 60px rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .product-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066ff, #00d4ff, #0066ff);
+            border-radius: 16px 16px 0 0;
         }
         
         .product-section h2 {
@@ -66,6 +80,7 @@
             padding-bottom: 12px;
             border-bottom: 2px solid rgba(0, 212, 255, 0.3);
             position: relative;
+            margin-top: 8px;
         }
         
         .product-section h2::after {
@@ -80,8 +95,21 @@
         
         .product-section h3 {
             font-size: 17px;
-            color: #333;
+            color: #1a1a1a;
             margin: 20px 0 12px 0;
+            font-weight: 600;
+        }
+        
+        .product-section p {
+            color: #333;
+            line-height: 1.8;
+            margin: 10px 0;
+        }
+        
+        .product-section ul li {
+            color: #333;
+            line-height: 1.8;
+            margin: 8px 0;
         }
         
         .product-features {
@@ -114,12 +142,13 @@
             font-size: 14px;
             border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
         
         .product-table th {
             background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
             color: white;
-            padding: 12px;
+            padding: 14px 12px;
             text-align: left;
             font-weight: 600;
             border: none;
@@ -128,35 +157,38 @@
         .product-table td {
             padding: 12px;
             border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            color: #333;
         }
         
         .product-table tr:nth-child(even) {
-            background: rgba(0, 212, 255, 0.05);
+            background: rgba(0, 212, 255, 0.08);
         }
         
         .product-table tr:hover {
-            background: rgba(0, 212, 255, 0.1);
+            background: rgba(0, 212, 255, 0.15);
         }
         
         .model-card {
-            border: 1px solid rgba(0, 212, 255, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.4);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #fafafa 0%, #f0f8ff 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
             transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(0, 102, 255, 0.08);
         }
         
         .model-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.15);
-            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.6);
         }
         
         .model-card h4 {
             color: #0066ff;
             margin-bottom: 12px;
             font-size: 17px;
+            font-weight: 600;
         }
         
         .model-specs {
@@ -177,70 +209,54 @@
         .spec-label {
             font-size: 12px;
             color: #666;
+            font-weight: 500;
         }
         
         .spec-value {
             font-size: 14px;
             font-weight: 600;
-            color: #333;
+            color: #1a1a1a;
             margin-top: 4px;
-        }
-        
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
-        }
-        
-        .product-section ul {
-            padding-left: 20px;
-            margin: 10px 0;
-        }
-        
-        .product-section ul li {
-            margin: 8px 0;
-            line-height: 1.6;
         }
         
         .update-card {
             border-left: 4px solid #00d4ff;
             padding: 16px 20px;
             margin: 15px 0;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 102, 255, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 102, 255, 0.08) 100%);
             border-radius: 0 12px 12px 0;
+            box-shadow: 0 2px 12px rgba(0, 102, 255, 0.1);
         }
         
         .update-card h3 {
             margin-top: 0;
             color: #0066ff;
+            font-weight: 600;
+        }
+        
+        .update-card p {
+            color: #333;
+        }
+        
+        .update-card ul li {
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <!-- 全局背景装饰 -->
-    <div class="bg-decor">
-        <div class="bg-orb bg-orb-1"></div>
-        <div class="bg-orb bg-orb-2"></div>
-        <div class="bg-orb bg-orb-3"></div>
-        <div class="bg-grid"></div>
-    </div>
-
     <div id="app">
+        <!-- 页面独立背景（覆盖全局深色背景） -->
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #f0f8ff 0%, #e6f0ff 50%, #f5f0ff 100%); z-index: -1;"></div>
+        
+        <!-- 全局背景装饰（降低透明度） -->
+        <div class="bg-decor" style="opacity: 0.3; z-index: 0;">
+            <div class="bg-orb bg-orb-1"></div>
+            <div class="bg-orb bg-orb-2"></div>
+            <div class="bg-orb bg-orb-3"></div>
+            <div class="bg-grid"></div>
+        </div>
+
+        <div class="page-container" style="position: relative; z-index: 1;">
         <div class="page-container">
             <div class="product-header">
                 <h1>专线卫士产品介绍</h1>
