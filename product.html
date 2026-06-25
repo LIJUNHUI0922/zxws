@@ -2,168 +2,24 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-title" content="专线卫士">
     <title>专线卫士 - 产品介绍</title>
     <link rel="stylesheet" href="styles-tech.css">
     <link rel="stylesheet" href="log-analysis-styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
     <style>
-        /* 页面进入动画 */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .page-container > * {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        .product-header {
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        .product-section {
-            animation: fadeInUp 0.6s ease-out;
-            animation-fill-mode: both;
-        }
-        
-        .product-section:nth-child(2) { animation-delay: 0.1s; }
-        .product-section:nth-child(3) { animation-delay: 0.2s; }
-        .product-section:nth-child(4) { animation-delay: 0.3s; }
-        .product-section:nth-child(5) { animation-delay: 0.4s; }
-        
-        /* 产品页面特定样式 */
-        .product-header {
-            background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
-            color: white;
-            padding: 40px 20px;
-            border-radius: 0 0 24px 24px;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: headerGlow 8s ease-in-out infinite;
-        }
-        
-        @keyframes headerGlow {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-20px, -20px); }
-        }
-        
-        .product-header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .product-header p {
-            font-size: 14px;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .product-section {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.1), 0 0 60px rgba(0, 212, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .product-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #0066ff, #00d4ff, #0066ff);
-            border-radius: 16px 16px 0 0;
-        }
-        
-        .product-section h2 {
-            font-size: 20px;
-            color: #0066ff;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
-            position: relative;
-            margin-top: 8px;
-        }
-        
-        .product-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, #00d4ff, #0066ff);
-        }
-        
-        .product-section h3 {
-            font-size: 17px;
-            color: #1a1a1a;
-            margin: 20px 0 12px 0;
-            font-weight: 600;
-        }
-        
-        .product-section p {
-            color: #333;
-            line-height: 1.8;
-            margin: 10px 0;
-        }
-        
-        .product-section ul li {
-            color: #333;
-            line-height: 1.8;
-            margin: 8px 0;
-        }
-        
-        .product-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
-        }
-        
-        .feature-tag {
-            background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
-            color: #0066ff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid rgba(0, 102, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+        /* 产品页面特定样式补充 */
+        .product-info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 12px rgba(0, 102, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
         }
         
         .product-table {
@@ -171,355 +27,291 @@
             border-collapse: collapse;
             margin: 15px 0;
             font-size: 14px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
         
         .product-table th {
             background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
             color: white;
-            padding: 14px 12px;
+            padding: 12px;
             text-align: left;
             font-weight: 600;
-            border: none;
         }
         
         .product-table td {
             padding: 12px;
             border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-            color: #333;
         }
         
         .product-table tr:nth-child(even) {
-            background: rgba(0, 212, 255, 0.08);
-        }
-        
-        .product-table tr:hover {
-            background: rgba(0, 212, 255, 0.15);
+            background: rgba(0, 212, 255, 0.05);
         }
         
         .model-card {
-            border: 1px solid rgba(0, 212, 255, 0.4);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 12px rgba(0, 102, 255, 0.08);
-        }
-        
-        .model-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
-            border-color: rgba(0, 212, 255, 0.6);
+            background: #fafafa;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
         }
         
         .model-card h4 {
             color: #0066ff;
-            margin-bottom: 12px;
-            font-size: 17px;
-            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 16px;
         }
         
         .model-specs {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px;
-            margin-top: 12px;
+            gap: 10px;
+            margin-top: 10px;
         }
         
         .spec-item {
             background: white;
-            padding: 10px 14px;
-            border-radius: 8px;
-            border-left: 4px solid #00d4ff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid #00d4ff;
         }
         
         .spec-label {
             font-size: 12px;
             color: #666;
-            font-weight: 500;
         }
         
         .spec-value {
             font-size: 14px;
             font-weight: 600;
-            color: #1a1a1a;
-            margin-top: 4px;
-        }
-        
-        .update-card {
-            border-left: 4px solid #00d4ff;
-            padding: 16px 20px;
-            margin: 15px 0;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 102, 255, 0.08) 100%);
-            border-radius: 0 12px 12px 0;
-            box-shadow: 0 2px 12px rgba(0, 102, 255, 0.1);
-        }
-        
-        .update-card h3 {
-            margin-top: 0;
-            color: #0066ff;
-            font-weight: 600;
-        }
-        
-        .update-card p {
             color: #333;
+            margin-top: 3px;
         }
         
-        .update-card ul li {
-            color: #333;
-        }
-        
-        /* 返回按钮样式优化 */
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .back-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .back-button:hover::before {
-            left: 100%;
-        }
-        
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
-        }
-        
-        .back-button svg {
-            margin-right: 8px;
-            transition: transform 0.3s ease;
-        }
-        
-        .back-button:hover svg {
-            transform: translateX(-3px);
+        .update-info {
+            background: rgba(0, 212, 255, 0.08);
+            border-left: 3px solid #00d4ff;
+            padding: 12px 16px;
+            margin: 12px 0;
+            border-radius: 0 8px 8px 0;
         }
     </style>
 </head>
 <body>
-    <div id="app">
-        <!-- 页面独立背景（覆盖全局深色背景） -->
-        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #f0f8ff 0%, #e6f0ff 50%, #f5f0ff 100%); z-index: -1;"></div>
-        
-        <!-- 全局背景装饰（降低透明度） -->
-        <div class="bg-decor" style="opacity: 0.3; z-index: 0;">
-            <div class="bg-orb bg-orb-1"></div>
-            <div class="bg-orb bg-orb-2"></div>
-            <div class="bg-orb bg-orb-3"></div>
-            <div class="bg-grid"></div>
-        </div>
+    <!-- 全局背景装饰 -->
+    <div class="bg-decor">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-grid"></div>
+    </div>
 
-        <div class="page-container" style="position: relative; z-index: 1;">
-            <div class="product-header">
-                <h1>专线卫士产品介绍</h1>
-                <p>中国移动 × 启明星辰 联合推出</p>
-            </div>
-            
-            <button class="back-button" onclick="goBack()">
-                <svg viewBox="0 0 24 24" width="20" height="20">
-                    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                返回首页
-            </button>
-            
-            <!-- 产品概述 -->
-            <div class="product-section">
-                <h2>产品概述</h2>
-                <p>专线卫士是由中国移动与启明星辰联合推出的云安全产品，于2023年5月17日世界电信日首次以"专线卫士(优享版)"形式亮相。</p>
-                <p>该产品是一款面向政企客户的"专线+安全"网关一体化服务，提供八大核心防护能力和托管式运维服务，构建了"1+8+1"综合安全防御体系。</p>
-                
-                <h3>核心特点</h3>
-                <div class="product-features">
-                    <div class="feature-tag">下一代防火墙</div>
-                    <div class="feature-tag">入侵防御</div>
-                    <div class="feature-tag">防病毒</div>
-                    <div class="feature-tag">上网行为管理</div>
-                    <div class="feature-tag">远程办公VPN</div>
-                    <div class="feature-tag">7×24小时运维</div>
-                    <div class="feature-tag">云边协同</div>
-                    <div class="feature-tag">智能威胁检测</div>
+    <div id="app">
+        <div class="page-container">
+            <div class="page active" style="display: block; padding-bottom: 100px;">
+                <div class="page-header">
+                    <button class="back-btn" onclick="goBack()">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <h2>专线卫士产品介绍</h2>
                 </div>
-            </div>
-            
-            <!-- 启明星辰专线卫士 -->
-            <div class="product-section">
-                <h2>启明星辰专线卫士</h2>
-                <p>启明星辰作为中国移动的合作伙伴，提供专线卫士的安全能力和技术方案。</p>
                 
-                <h3>产品版本</h3>
-                <table class="product-table">
-                    <thead>
-                        <tr>
-                            <th>版本</th>
-                            <th>特点</th>
-                            <th>适用场景</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>优享版</strong></td>
-                            <td>基础安全防护，入侵检测与防护、防病毒、上网行为管理</td>
-                            <td>中小企业、分支机构</td>
-                        </tr>
-                        <tr>
-                            <td><strong>增强版</strong></td>
-                            <td>高级威胁检测、AI智能分析、云边端全面防护</td>
-                            <td>大型企业、政府机构</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <h3>技术架构</h3>
-                <p>专线卫士采用"云端集中运营平台+本地安全网关"的协同联动架构：</p>
-                <ul style="padding-left: 20px; margin: 10px 0;">
-                    <li><strong>云端集中运营平台</strong>：以安全数据为驱动，提供智能化关联分析技术和基于机器学习的威胁狩猎功能</li>
-                    <li><strong>本地安全网关</strong>：以下一代防火墙为驱动轴心，实现业务感知、上网行为管理、入侵攻击阻断、病毒防护等多种安全功能</li>
-                </ul>
-            </div>
-            
-            <!-- 华为专线卫士 -->
-            <div class="product-section">
-                <h2>华为专线卫士</h2>
-                <p>华为提供专线卫士的安全网关硬件设备，与启明星辰的安全能力深度融合。</p>
-                
-                <h3>HiSecEngine USG6500F-DPL系列</h3>
-                <p>华为HiSecEngine USG6500F-DPL系列All-in-One智能安全网关是华为面向小型企业、行业分支、连锁商业机构推出的新一代桌面型防火墙设备。</p>
-                
-                <div class="model-card">
-                    <h4>USG6510F-DL</h4>
-                    <div class="model-specs">
-                        <div class="spec-item">
-                            <div class="spec-label">业务口</div>
-                            <div class="spec-value">4×GE SFP + 8×GE RJ45 + LTE</div>
+                <!-- 产品概述 -->
+                <div class="scenario-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="#0066ff" stroke-width="2"/>
+                                <path d="M12 6v6l4 2" fill="none" stroke="#0066ff" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
                         </div>
-                        <div class="spec-item">
-                            <div class="spec-label">产品型态</div>
-                            <div class="spec-value">桌面款</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">尺寸</div>
-                            <div class="spec-value">320×220×43.6mm</div>
+                        <div class="info-content">
+                            <h4>产品概述</h4>
+                            <p>专线卫士是由中国移动与启明星辰联合推出的云安全产品，于2023年5月17日世界电信日首次以"专线卫士(优享版)"形式亮相。</p>
+                            <p>该产品是一款面向政企客户的"专线+安全"网关一体化服务，提供八大核心防护能力和托管式运维服务，构建了"1+8+1"综合安全防御体系。</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="model-card">
-                    <h4>USG6510F-DPLUS</h4>
-                    <div class="model-specs">
-                        <div class="spec-item">
-                            <div class="spec-label">业务口</div>
-                            <div class="spec-value">4×GE SFP + 8×GE RJ45 + LTE（支持4×PoE）</div>
+                <div class="section-title">
+                    <span>核心特点</span>
+                </div>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0;">
+                    <span class="feature-tag">下一代防火墙</span>
+                    <span class="feature-tag">入侵防御</span>
+                    <span class="feature-tag">防病毒</span>
+                    <span class="feature-tag">上网行为管理</span>
+                    <span class="feature-tag">远程办公VPN</span>
+                    <span class="feature-tag">7×24小时运维</span>
+                    <span class="feature-tag">云边协同</span>
+                    <span class="feature-tag">智能威胁检测</span>
+                </div>
+                
+                <!-- 启明星辰专线卫士 -->
+                <div class="section-title">
+                    <span>启明星辰专线卫士</span>
+                </div>
+                
+                <div class="product-info-card">
+                    <p>启明星辰作为中国移动的合作伙伴，提供专线卫士的安全能力和技术方案。</p>
+                    
+                    <h4 style="color: #0066ff; margin: 15px 0 10px 0;">产品版本</h4>
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>版本</th>
+                                <th>特点</th>
+                                <th>适用场景</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>优享版</strong></td>
+                                <td>基础安全防护，入侵检测与防护、防病毒、上网行为管理</td>
+                                <td>中小企业、分支机构</td>
+                            </tr>
+                            <tr>
+                                <td><strong>增强版</strong></td>
+                                <td>高级威胁检测、AI智能分析、云边端全面防护</td>
+                                <td>大型企业、政府机构</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h4 style="color: #0066ff; margin: 15px 0 10px 0;">技术架构</h4>
+                    <p>专线卫士采用"云端集中运营平台+本地安全网关"的协同联动架构：</p>
+                    <ul style="padding-left: 20px; margin: 10px 0; line-height: 1.8;">
+                        <li><strong>云端集中运营平台</strong>：以安全数据为驱动，提供智能化关联分析技术和基于机器学习的威胁狩猎功能</li>
+                        <li><strong>本地安全网关</strong>：以下一代防火墙为驱动轴心，实现业务感知、上网行为管理、入侵攻击阻断、病毒防护等多种安全功能</li>
+                    </ul>
+                </div>
+                
+                <!-- 华为专线卫士 -->
+                <div class="section-title">
+                    <span>华为专线卫士</span>
+                </div>
+                
+                <div class="product-info-card">
+                    <p>华为提供专线卫士的安全网关硬件设备，与启明星辰的安全能力深度融合。</p>
+                    
+                    <h4 style="color: #0066ff; margin: 15px 0 10px 0;">HiSecEngine USG6500F-DPL系列</h4>
+                    <p>华为HiSecEngine USG6500F-DPL系列All-in-One智能安全网关是华为面向小型企业、行业分支、连锁商业机构推出的新一代桌面型防火墙设备。</p>
+                    
+                    <div class="model-card">
+                        <h4>USG6510F-DL</h4>
+                        <div class="model-specs">
+                            <div class="spec-item">
+                                <div class="spec-label">业务口</div>
+                                <div class="spec-value">4×GE SFP + 8×GE RJ45 + LTE</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">产品型态</div>
+                                <div class="spec-value">桌面款</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">尺寸</div>
+                                <div class="spec-value">320×220×43.6mm</div>
+                            </div>
                         </div>
-                        <div class="spec-item">
-                            <div class="spec-label">产品型态</div>
-                            <div class="spec-value">桌面款</div>
+                    </div>
+                    
+                    <div class="model-card">
+                        <h4>USG6510F-DPLUS</h4>
+                        <div class="model-specs">
+                            <div class="spec-item">
+                                <div class="spec-label">业务口</div>
+                                <div class="spec-value">4×GE SFP + 8×GE RJ45 + LTE（支持4×PoE）</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">产品型态</div>
+                                <div class="spec-value">桌面款</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">尺寸</div>
+                                <div class="spec-value">320×220×43.6mm</div>
+                            </div>
                         </div>
-                        <div class="spec-item">
-                            <div class="spec-label">尺寸</div>
-                            <div class="spec-value">320×220×43.6mm</div>
+                    </div>
+                    
+                    <div class="model-card">
+                        <h4>USG6530F-DL</h4>
+                        <div class="model-specs">
+                            <div class="spec-item">
+                                <div class="spec-label">业务口</div>
+                                <div class="spec-value">2×10GE SFP+ + 2×GE SFP + 8×GE RJ45 + LTE</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">产品型态</div>
+                                <div class="spec-value">桌面款</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">尺寸</div>
+                                <div class="spec-value">320×220×43.6mm</div>
+                            </div>
                         </div>
+                    </div>
+                    
+                    <div class="model-card">
+                        <h4>USG6530F-DPL</h4>
+                        <div class="model-specs">
+                            <div class="spec-item">
+                                <div class="spec-label">业务口</div>
+                                <div class="spec-value">2×10GE SFP+ + 2×GE SFP + 8×GE RJ45 + LTE（支持4×PoE）</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">产品型态</div>
+                                <div class="spec-value">桌面款</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">尺寸</div>
+                                <div class="spec-value">320×220×43.6mm</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4 style="color: #0066ff; margin: 15px 0 10px 0;">核心能力</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0;">
+                        <span class="feature-tag">极简部署</span>
+                        <span class="feature-tag">智能检测</span>
+                        <span class="feature-tag">云边协同</span>
+                        <span class="feature-tag">一体化防护</span>
+                        <span class="feature-tag">应用识别与管控</span>
+                        <span class="feature-tag">入侵防御与Web防护</span>
+                        <span class="feature-tag">防病毒</span>
+                        <span class="feature-tag">业务智能选路</span>
+                        <span class="feature-tag">VPN加密</span>
                     </div>
                 </div>
                 
-                <div class="model-card">
-                    <h4>USG6530F-DL</h4>
-                    <div class="model-specs">
-                        <div class="spec-item">
-                            <div class="spec-label">业务口</div>
-                            <div class="spec-value">2×10GE SFP+ + 2×GE SFP + 8×GE RJ45 + LTE</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">产品型态</div>
-                            <div class="spec-value">桌面款</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">尺寸</div>
-                            <div class="spec-value">320×220×43.6mm</div>
-                        </div>
-                    </div>
+                <!-- 应用场景 -->
+                <div class="section-title">
+                    <span>应用场景</span>
                 </div>
                 
-                <div class="model-card">
-                    <h4>USG6530F-DPL</h4>
-                    <div class="model-specs">
-                        <div class="spec-item">
-                            <div class="spec-label">业务口</div>
-                            <div class="spec-value">2×10GE SFP+ + 2×GE SFP + 8×GE RJ45 + LTE（支持4×PoE）</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">产品型态</div>
-                            <div class="spec-value">桌面款</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">尺寸</div>
-                            <div class="spec-value">320×220×43.6mm</div>
-                        </div>
-                    </div>
+                <div class="product-info-card">
+                    <p>专线卫士已在全国多地落地应用，服务于政务、医疗、教育、金融等行业。</p>
+                    
+                    <h4 style="color: #0066ff; margin: 15px 0 10px 0;">成功案例</h4>
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li><strong>陕西</strong>：政务专网安全防护</li>
+                        <li><strong>海南</strong>：医疗行业信息安全</li>
+                        <li><strong>河北</strong>：自2023年推出后已服务于1.5万专线企业客户</li>
+                        <li><strong>哈尔滨</strong>：企业网络安全双重保障</li>
+                        <li><strong>连云港</strong>：地方大数据产业安全发展</li>
+                    </ul>
                 </div>
                 
-                <h3>核心能力</h3>
-                <div class="product-features">
-                    <div class="feature-tag">极简部署</div>
-                    <div class="feature-tag">智能检测</div>
-                    <div class="feature-tag">云边协同</div>
-                    <div class="feature-tag">一体化防护</div>
-                    <div class="feature-tag">应用识别与管控</div>
-                    <div class="feature-tag">入侵防御与Web防护</div>
-                    <div class="feature-tag">防病毒</div>
-                    <div class="feature-tag">业务智能选路</div>
-                    <div class="feature-tag">VPN加密</div>
+                <!-- 最新动态 -->
+                <div class="section-title">
+                    <span>最新动态</span>
                 </div>
-            </div>
-            
-            <!-- 应用场景 -->
-            <div class="product-section">
-                <h2>应用场景</h2>
-                <p>专线卫士已在全国多地落地应用，服务于政务、医疗、教育、金融等行业。</p>
                 
-                <h3>成功案例</h3>
-                <ul style="padding-left: 20px;">
-                    <li><strong>陕西</strong>：政务专网安全防护</li>
-                    <li><strong>海南</strong>：医疗行业信息安全</li>
-                    <li><strong>河北</strong>：自2023年推出后已服务于1.5万专线企业客户</li>
-                    <li><strong>哈尔滨</strong>：企业网络安全双重保障</li>
-                    <li><strong>连云港</strong>：地方大数据产业安全发展</li>
-                </ul>
-            </div>
-            
-            <!-- 最新动态 -->
-            <div class="product-section">
-                <h2>最新动态</h2>
-                <div class="update-card">
-                    <h3 style="margin-top: 0;">OpenClaw防护升级</h3>
+                <div class="update-info">
+                    <h4 style="color: #0066ff; margin: 0 0 10px 0;">OpenClaw防护升级</h4>
                     <p>2026年3月，针对OpenClaw等AI代理服务因配置错误大规模暴露引发的安全风险，专线卫士升级了防护能力。</p>
                     <p><strong>新增功能：</strong></p>
-                    <ul style="padding-left: 20px;">
+                    <ul style="padding-left: 20px; margin: 10px 0; line-height: 1.8;">
                         <li>针对内网影子AI的自动发现</li>
                         <li>与云平台建立认证加密隧道</li>
                         <li>特征库内置OpenClaw专有特征签名，实时识别并阻断漏洞探测、暴力破解等攻击</li>
