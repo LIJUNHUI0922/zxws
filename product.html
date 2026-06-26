@@ -13,91 +13,208 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
     <style>
         /* 产品页面特定样式 - 适配深色主题 */
-        .product-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 14px;
-            color: #e0e0e0;
+        .content-section {
+            margin-bottom: 20px;
         }
-        
-        .product-table th {
-            background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
-            color: white;
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        .product-table td {
-            padding: 12px;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-            color: #e0e0e0;
-        }
-        
-        .product-table tr:nth-child(even) {
-            background: rgba(0, 212, 255, 0.05);
-        }
-        
-        .model-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-        
-        .model-card h4 {
+
+        .content-section h4 {
             color: #00d4ff;
-            margin-bottom: 10px;
             font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 12px 0;
+            padding-left: 12px;
+            border-left: 3px solid #00d4ff;
         }
-        
-        .model-specs {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
+
+        .content-body {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 10px;
+            padding: 16px;
             margin-top: 10px;
         }
-        
-        .spec-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 12px;
-            border-radius: 6px;
-            border-left: 3px solid #00d4ff;
-        }
-        
-        .spec-label {
-            font-size: 12px;
-            color: #999;
-        }
-        
-        .spec-value {
+
+        .content-body p {
+            color: #c8d4e6;
+            line-height: 1.9;
+            margin: 0 0 12px 0;
             font-size: 14px;
+        }
+
+        .content-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+
+        .content-body ul li {
+            position: relative;
+            padding: 10px 0 10px 20px;
+            color: #c8d4e6;
+            line-height: 1.7;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.08);
+        }
+
+        .content-body ul li:last-child {
+            border-bottom: none;
+        }
+
+        .content-body ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(0, 150, 255, 0.5);
+        }
+
+        .content-body strong {
+            color: #ffffff;
             font-weight: 600;
-            color: #e0e0e0;
-            margin-top: 3px;
         }
-        
-        .update-info {
-            background: rgba(0, 212, 255, 0.08);
-            border-left: 3px solid #00d4ff;
-            padding: 12px 16px;
-            margin: 12px 0;
-            border-radius: 0 8px 8px 0;
-            color: #e0e0e0;
+
+        /* 表格容器 */
+        .table-wrapper {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 10px;
+            overflow-x: auto;
         }
-        
-        .update-info h4 {
+
+        .product-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 13px;
+            min-width: 550px;
+        }
+
+        .product-table th {
+            background: linear-gradient(135deg, #0066ff 0%, #0099ff 100%);
+            color: white;
+            padding: 11px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .product-table th:first-child {
+            border-radius: 6px 0 0 0;
+        }
+
+        .product-table th:last-child {
+            border-radius: 0 6px 0 0;
+        }
+
+        .product-table td {
+            padding: 11px 14px;
+            color: #c8d4e6;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            vertical-align: top;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .product-table tr:last-child td:first-child {
+            border-radius: 0 0 0 6px;
+        }
+
+        .product-table tr:last-child td:last-child {
+            border-radius: 0 0 6px 0;
+        }
+
+        .product-table tr:nth-child(even) td {
+            background: rgba(0, 212, 255, 0.03);
+        }
+
+        .product-table tr:hover td {
+            background: rgba(0, 150, 255, 0.08);
+        }
+
+        .product-table strong {
             color: #00d4ff;
+            font-weight: 600;
         }
-        
-        .update-info p {
-            color: #e0e0e0;
+
+        /* 模型卡片 */
+        .model-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.25s ease;
         }
-        
-        .update-info ul li {
-            color: #e0e0e0;
+
+        .model-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(0, 212, 255, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .model-card h4 {
+            color: #ffffff;
+            margin-bottom: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .model-card h4::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, #0066ff, #00d4ff);
+            border-radius: 2px;
+        }
+
+        .model-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .spec-item {
+            background: rgba(0, 102, 255, 0.08);
+            padding: 10px 12px;
+            border-radius: 6px;
+            border-left: 3px solid #0066ff;
+        }
+
+        .spec-label {
+            font-size: 11px;
+            color: #7890b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            font-size: 13px;
+            font-weight: 500;
+            color: #e0e8f4;
+            word-break: break-all;
+        }
+
+        /* 标签组容器 */
+        .tags-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -139,19 +256,20 @@
                     </div>
                 </div>
                 
-                <div class="section-title">
-                    <span>核心特点</span>
-                </div>
-                
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0;">
-                    <span class="feature-tag">下一代防火墙</span>
-                    <span class="feature-tag">入侵防御</span>
-                    <span class="feature-tag">防病毒</span>
-                    <span class="feature-tag">上网行为管理</span>
-                    <span class="feature-tag">远程办公VPN</span>
-                    <span class="feature-tag">7×24小时运维</span>
-                    <span class="feature-tag">云边协同</span>
-                    <span class="feature-tag">智能威胁检测</span>
+                <div class="content-section">
+                    <h4>核心特点</h4>
+                    <div class="content-body">
+                        <div class="tags-wrapper">
+                            <span class="feature-tag">下一代防火墙</span>
+                            <span class="feature-tag">入侵防御</span>
+                            <span class="feature-tag">防病毒</span>
+                            <span class="feature-tag">上网行为管理</span>
+                            <span class="feature-tag">远程办公VPN</span>
+                            <span class="feature-tag">7×24小时运维</span>
+                            <span class="feature-tag">云边协同</span>
+                            <span class="feature-tag">智能威胁检测</span>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- 启明星辰专线卫士 -->
@@ -159,7 +277,7 @@
                     <span>启明星辰专线卫士</span>
                 </div>
                 
-                <div class="scenario-info" style="margin: 15px 0;">
+                <div class="scenario-info">
                     <div class="info-card">
                         <div class="info-content">
                             <p>启明星辰作为中国移动的合作伙伴，提供专线卫士的安全能力和技术方案。</p>
@@ -167,38 +285,42 @@
                     </div>
                 </div>
                 
-                <div style="margin: 15px 0;">
-                    <h4 style="color: #00d4ff; margin: 15px 0 10px 0;">产品版本</h4>
-                    <table class="product-table">
-                        <thead>
-                            <tr>
-                                <th>版本</th>
-                                <th>特点</th>
-                                <th>适用场景</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>优享版</strong></td>
-                                <td>基础安全防护，入侵检测与防护、防病毒、上网行为管理</td>
-                                <td>中小企业、分支机构</td>
-                            </tr>
-                            <tr>
-                                <td><strong>增强版</strong></td>
-                                <td>高级威胁检测、AI智能分析、云边端全面防护</td>
-                                <td>大型企业、政府机构</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="content-section">
+                    <h4>产品版本</h4>
+                    <div class="table-wrapper">
+                        <table class="product-table">
+                            <thead>
+                                <tr>
+                                    <th>版本</th>
+                                    <th>特点</th>
+                                    <th>适用场景</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>优享版</strong></td>
+                                    <td>基础安全防护，入侵检测与防护、防病毒、上网行为管理</td>
+                                    <td>中小企业、分支机构</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>增强版</strong></td>
+                                    <td>高级威胁检测、AI智能分析、云边端全面防护</td>
+                                    <td>大型企业、政府机构</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                
-                <div style="margin: 15px 0;">
-                    <h4 style="color: #00d4ff; margin: 15px 0 10px 0;">技术架构</h4>
-                    <p style="color: #e0e0e0; line-height: 1.8;">专线卫士采用"云端集中运营平台+本地安全网关"的协同联动架构：</p>
-                    <ul style="padding-left: 20px; margin: 10px 0; line-height: 1.8; color: #e0e0e0;">
-                        <li><strong>云端集中运营平台</strong>：以安全数据为驱动，提供智能化关联分析技术和基于机器学习的威胁狩猎功能</li>
-                        <li><strong>本地安全网关</strong>：以下一代防火墙为驱动轴心，实现业务感知、上网行为管理、入侵攻击阻断、病毒防护等多种安全功能</li>
-                    </ul>
+
+                <div class="content-section">
+                    <h4>技术架构</h4>
+                    <div class="content-body">
+                        <p>专线卫士采用<strong>"云端集中运营平台+本地安全网关"</strong>的协同联动架构：</p>
+                        <ul>
+                            <li><strong>云端集中运营平台</strong>：以安全数据为驱动，提供智能化关联分析技术和基于机器学习的威胁狩猎功能</li>
+                            <li><strong>本地安全网关</strong>：以下一代防火墙为驱动轴心，实现业务感知、上网行为管理、入侵攻击阻断、病毒防护等多种安全功能</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <!-- 华为专线卫士 -->
@@ -206,102 +328,107 @@
                     <span>华为专线卫士</span>
                 </div>
                 
-                <div class="scenario-info" style="margin: 15px 0;">
+                <div class="scenario-info">
                     <div class="info-card">
                         <div class="info-content">
-                            <p style="color: #e0e0e0;">华为提供专线卫士的安全网关硬件设备，与启明星辰的安全能力深度融合。</p>
+                            <p>华为提供专线卫士的安全网关硬件设备，与启明星辰的安全能力深度融合。</p>
                         </div>
                     </div>
                 </div>
                 
-                <div style="margin: 15px 0;">
-                    <h4 style="color: #00d4ff; margin: 15px 0 10px 0;">HiSecEngine USG6500F-DPL系列</h4>
-                    <p style="color: #e0e0e0; line-height: 1.8;">华为HiSecEngine USG6500F-DPL系列All-in-One智能安全网关是华为面向小型企业、行业分支、连锁商业机构推出的新一代桌面型防火墙设备。</p>
+                <div class="content-section">
+                    <h4>HiSecEngine USG6500F-DPL系列</h4>
+                    <div class="content-body">
+                        <p>华为HiSecEngine USG6500F-DPL系列All-in-One智能安全网关是华为面向小型企业、行业分支、连锁商业机构推出的新一代桌面型防火墙设备。</p>
+                    </div>
                 </div>
-                    
-                    <div class="model-card">
-                        <h4>USG6510F-DL</h4>
-                        <div class="model-specs">
-                            <div class="spec-item">
-                                <div class="spec-label">业务口</div>
-                                <div class="spec-value">4×GE SFP + 8×GE RJ45 + LTE</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">产品型态</div>
-                                <div class="spec-value">桌面款</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">尺寸</div>
-                                <div class="spec-value">320×220×43.6mm</div>
-                            </div>
+                
+                <div class="model-card">
+                    <h4>USG6510F-DL</h4>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <div class="spec-label">业务口</div>
+                            <div class="spec-value">4×GE SFP + 8×GE RJ45 + LTE</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">产品型态</div>
+                            <div class="spec-value">桌面款</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">尺寸</div>
+                            <div class="spec-value">320×220×43.6mm</div>
                         </div>
                     </div>
-                    
-                    <div class="model-card">
-                        <h4>USG6510F-DPLUS</h4>
-                        <div class="model-specs">
-                            <div class="spec-item">
-                                <div class="spec-label">业务口</div>
-                                <div class="spec-value">4×GE SFP + 8×GE RJ45 + LTE（支持4×PoE）</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">产品型态</div>
-                                <div class="spec-value">桌面款</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">尺寸</div>
-                                <div class="spec-value">320×220×43.6mm</div>
-                            </div>
+                </div>
+                
+                <div class="model-card">
+                    <h4>USG6510F-DPLUS</h4>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <div class="spec-label">业务口</div>
+                            <div class="spec-value">4×GE SFP + 8×GE RJ45 + LTE（支持4×PoE）</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">产品型态</div>
+                            <div class="spec-value">桌面款</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">尺寸</div>
+                            <div class="spec-value">320×220×43.6mm</div>
                         </div>
                     </div>
-                    
-                    <div class="model-card">
-                        <h4>USG6530F-DL</h4>
-                        <div class="model-specs">
-                            <div class="spec-item">
-                                <div class="spec-label">业务口</div>
-                                <div class="spec-value">2×10GE SFP+ + 2×GE SFP + 8×GE RJ45 + LTE</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">产品型态</div>
-                                <div class="spec-value">桌面款</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">尺寸</div>
-                                <div class="spec-value">320×220×43.6mm</div>
-                            </div>
+                </div>
+                
+                <div class="model-card">
+                    <h4>USG6530F-DL</h4>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <div class="spec-label">业务口</div>
+                            <div class="spec-value">2×10GE SFP+ + 2×GE SFP + 8×GE RJ45 + LTE</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">产品型态</div>
+                            <div class="spec-value">桌面款</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">尺寸</div>
+                            <div class="spec-value">320×220×43.6mm</div>
                         </div>
                     </div>
-                    
-                    <div class="model-card">
-                        <h4>USG6530F-DPL</h4>
-                        <div class="model-specs">
-                            <div class="spec-item">
-                                <div class="spec-label">业务口</div>
-                                <div class="spec-value">2×10GE SFP+ + 2×GE SFP + 8×GE RJ45 + LTE（支持4×PoE）</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">产品型态</div>
-                                <div class="spec-value">桌面款</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label">尺寸</div>
-                                <div class="spec-value">320×220×43.6mm</div>
-                            </div>
+                </div>
+                
+                <div class="model-card">
+                    <h4>USG6530F-DPL</h4>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <div class="spec-label">业务口</div>
+                            <div class="spec-value">2×10GE SFP+ + 2×GE SFP + 8×GE RJ45 + LTE（支持4×PoE）</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">产品型态</div>
+                            <div class="spec-value">桌面款</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">尺寸</div>
+                            <div class="spec-value">320×220×43.6mm</div>
                         </div>
                     </div>
-                    
-                    <h4 style="color: #0066ff; margin: 15px 0 10px 0;">核心能力</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0;">
-                        <span class="feature-tag">极简部署</span>
-                        <span class="feature-tag">智能检测</span>
-                        <span class="feature-tag">云边协同</span>
-                        <span class="feature-tag">一体化防护</span>
-                        <span class="feature-tag">应用识别与管控</span>
-                        <span class="feature-tag">入侵防御与Web防护</span>
-                        <span class="feature-tag">防病毒</span>
-                        <span class="feature-tag">业务智能选路</span>
-                        <span class="feature-tag">VPN加密</span>
+                </div>
+                
+                <div class="content-section">
+                    <h4>核心能力</h4>
+                    <div class="content-body">
+                        <div class="tags-wrapper">
+                            <span class="feature-tag">极简部署</span>
+                            <span class="feature-tag">智能检测</span>
+                            <span class="feature-tag">云边协同</span>
+                            <span class="feature-tag">一体化防护</span>
+                            <span class="feature-tag">应用识别与管控</span>
+                            <span class="feature-tag">入侵防御与Web防护</span>
+                            <span class="feature-tag">防病毒</span>
+                            <span class="feature-tag">业务智能选路</span>
+                            <span class="feature-tag">VPN加密</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -310,19 +437,23 @@
                     <span>应用场景</span>
                 </div>
                 
-                <div class="scenario-info" style="margin: 15px 0;">
+                <div class="scenario-info">
                     <div class="info-card">
                         <div class="info-content">
-                            <p style="color: #e0e0e0;">专线卫士已在全国多地落地应用，服务于政务、医疗、教育、金融等行业。</p>
-                            
-                            <h4 style="color: #00d4ff; margin: 15px 0 10px 0;">成功案例</h4>
-                            <ul style="padding-left: 20px; line-height: 1.8; color: #e0e0e0;">
-                                <li><strong>陕西</strong>：政务专网安全防护</li>
-                                <li><strong>海南</strong>：医疗行业信息安全</li>
-                                <li><strong>河北</strong>：自2023年推出后已服务于1.5万专线企业客户</li>
-                                <li><strong>哈尔滨</strong>：企业网络安全双重保障</li>
-                                <li><strong>连云港</strong>：地方大数据产业安全发展</li>
-                            </ul>
+                            <p>专线卫士已在全国多地落地应用，服务于政务、医疗、教育、金融等行业。</p>
+
+                            <div class="content-section" style="margin-top: 16px; margin-bottom: 0;">
+                                <h4>成功案例</h4>
+                                <div class="content-body" style="margin-top: 10px;">
+                                    <ul>
+                                        <li><strong>陕西</strong>：政务专网安全防护</li>
+                                        <li><strong>海南</strong>：医疗行业信息安全</li>
+                                        <li><strong>河北</strong>：自2023年推出后已服务于1.5万专线企业客户</li>
+                                        <li><strong>哈尔滨</strong>：企业网络安全双重保障</li>
+                                        <li><strong>连云港</strong>：地方大数据产业安全发展</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -342,15 +473,17 @@
                         </div>
                         <div class="info-content">
                             <h4>OpenClaw防护升级</h4>
-                            <p style="color: #e0e0e0;">2026年3月，针对OpenClaw等AI代理服务因配置错误大规模暴露引发的安全风险，专线卫士升级了防护能力。</p>
-                            <p style="color: #e0e0e0;"><strong>新增功能：</strong></p>
-                            <ul style="padding-left: 20px; margin: 10px 0; line-height: 1.8; color: #e0e0e0;">
-                                <li>针对内网影子AI的自动发现</li>
-                                <li>与云平台建立认证加密隧道</li>
-                                <li>特征库内置OpenClaw专有特征签名，实时识别并阻断漏洞探测、暴力破解等攻击</li>
-                                <li>通过网络层访问控制策略和端口隔离技术收敛暴露面</li>
-                                <li>支持防护能力的自动升级</li>
-                            </ul>
+                            <p>2026年3月，针对OpenClaw等AI代理服务因配置错误大规模暴露引发的安全风险，专线卫士升级了防护能力。</p>
+                            <div class="content-body">
+                                <p><strong>新增功能：</strong></p>
+                                <ul>
+                                    <li>针对内网影子AI的自动发现</li>
+                                    <li>与云平台建立认证加密隧道</li>
+                                    <li>特征库内置OpenClaw专有特征签名，实时识别并阻断漏洞探测、暴力破解等攻击</li>
+                                    <li>通过网络层访问控制策略和端口隔离技术收敛暴露面</li>
+                                    <li>支持防护能力的自动升级</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
